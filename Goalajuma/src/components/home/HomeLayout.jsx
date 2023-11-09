@@ -10,6 +10,8 @@ import Modal from "../common/modal/Modal";
 import ModalLayout from "../common/modal/ModalLayout";
 import ShareForm from "../common/modal/ShareForm";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { isModalState } from "@/utils/ToastAtom";
 import routes from "@/routes";
 
 /**
@@ -18,7 +20,7 @@ import routes from "@/routes";
  * @param {string} props.what
  */
 
-const HomeLayout = ({ data, what, route }) => {
+const HomeLayout = ({ data, what, route, modal }) => {
   const navigate = useNavigate();
 
   const {
@@ -37,7 +39,7 @@ const HomeLayout = ({ data, what, route }) => {
   const [participateState, setParticipate] = useState(
     participate && participate
   );
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(modal);
   const [share, setShare] = useState(false);
   const [optionState, setOptionState] = useState(options);
   // const [count, setCount] = useState(0);
@@ -59,14 +61,15 @@ const HomeLayout = ({ data, what, route }) => {
   };
 
   const clickModal = (data) => {
-    navigate(route + data.id);
     setModalVisible(true);
+    navigate(route + data.id);
+
     // setModalId(data.id);
   };
   const closeModal = () => {
     // location.reload();
-    navigate(route);
     setModalVisible(false);
+    navigate(route);
   };
   const shareOpenModal = () => {
     setShare(true);

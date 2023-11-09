@@ -23,15 +23,21 @@ function App() {
         <Route path={routes.signup} element={<SignUpPage />}></Route>
 
         <Route path={routes.home} element={<MainPage />}></Route>
-        <Route path={`${routes.home}:id`} element={<MainPage />}></Route>
+        <Route
+          path={`${routes.home}:id`}
+          element={<MainPage modal={true} />}
+        ></Route>
 
         <Route path={routes.hot} element={<HotPage />}></Route>
-        <Route path={`${routes.hot}:id`} element={<HotPage />}></Route>
+        <Route
+          path={`${routes.hot}:id`}
+          element={<HotPage modal={true} />}
+        ></Route>
 
         <Route path={routes.complete} element={<CompletePage />}></Route>
         <Route
           path={`${routes.complete}:id`}
-          element={<CompletePage />}
+          element={<CompletePage modal={true} />}
         ></Route>
 
         <Route path={routes.mypage} element={<MyPage />}></Route>

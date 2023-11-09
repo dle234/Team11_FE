@@ -1,7 +1,7 @@
 import routes from "@/routes";
 import HomeLayout from "../home/HomeLayout";
 routes;
-const HotTemplate = ({ datas, isFetching }) => {
+const HotTemplate = ({ datas, isFetching, modal }) => {
   return (
     <div>
       {datas &&
@@ -9,6 +9,7 @@ const HotTemplate = ({ datas, isFetching }) => {
         // eslint-disable-next-line react/prop-types
         datas.map((data, id) => (
           <HomeLayout
+            modal={modal}
             id={id}
             data={data}
             what="hot"
